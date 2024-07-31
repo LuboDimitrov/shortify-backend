@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: urlshortenerdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
